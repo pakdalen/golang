@@ -1,0 +1,21 @@
+syntax ="proto3";
+
+package proto;
+option go_package ="./api";
+
+
+message GetStudentListRequest{
+  string name= 1;
+  string surname =2;
+  int32 id=3;
+  int32 yearofstudy=4;
+  int32 Marks=5;
+  int32 Subjects=6;
+}
+message GetStudentsListResponse{
+  int32 Gpa =1;
+}
+service Students{
+  rpc GetStudent(GetStudentListRequest) returns (GetStudentsListResponse){
+
+  }}
