@@ -3,7 +3,7 @@ syntax ="proto3";
 package proto;
 option go_package ="./api";
 
-
+import "google/api/annotations.proto";
 message GetStudentListRequest{
   string name= 1;
   string surname =2;
@@ -11,11 +11,54 @@ message GetStudentListRequest{
   int32 yearofstudy=4;
   int32 Marks=5;
   int32 Subjects=6;
+
 }
 message GetStudentsListResponse{
   int32 Gpa =1;
 }
 service Students{
   rpc GetStudent(GetStudentListRequest) returns (GetStudentsListResponse){
-
-  }}
+  option (google.api.http) ={
+    post:"/get"
+    body:"*"
+  };
+//rpc Create(CreateStudentListRequest) returns (CreateStudentListResponse){}
+//    rpc Update(UpdateStudentListRequest) returns (UpdateStudentListResponce){}
+//rpc Delete(DeleteStudentListRequest) returns (DeleteStudentListResponce){}
+}}
+//message Student{
+//  int32 student=1;
+//}
+//message CreateStudentListRequest {
+//  string name= 1;
+//  string surname =2;
+//  int32 id=3;
+//  int32 yearofstudy=4;
+//  int32 Marks=5;
+//  int32 Subjects=6;
+//
+//  ;
+//}
+//message CreateStudentListResponse{
+//  Student student = 1;
+//}
+//message UpdateStudentListRequest{
+//  string name= 1;
+//  string surname =2;
+//  int32 id=3;
+//  int32 yearofstudy=4;
+//  int32 Marks=5;
+//  int32 Subjects=6;
+//  ;
+//}
+//message UpdateStudentListResponce{
+//   Student student =1;
+//}
+//message DeleteStudentListRequest{
+//  int32 id=1;
+//
+//}
+//message DeleteStudentListResponce{
+//  Student student =1;
+//
+//}
